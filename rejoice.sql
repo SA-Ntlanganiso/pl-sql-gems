@@ -115,7 +115,7 @@ BEGIN
 END;
 /
 
--- Cursors's select JOIN statement which  
+
 
 DECLARE
     -- Define the cursor to select data from employees and departments
@@ -148,7 +148,7 @@ END;
 /
 
 
--- CT@ QUESTION 1
+-- CT2 QUESTION 1
 
 
 SET SERVEROUTPUT ON;
@@ -402,7 +402,7 @@ BEGIN
         v_index := v_index + 1;
     END LOOP;
     
-    -- ✅ FIX: Use a proper number format
+
     DBMS_OUTPUT.PUT_LINE('Total retail value of COOKING BOOKS: ' || TO_CHAR(v_total_retail, 'FM9999999.99'));
 
     -- Find the max price in the retail associative array
@@ -414,7 +414,7 @@ BEGIN
         END IF;
     END LOOP;
 
-    -- ✅ FIX: Use correct formatting for max price
+
     DBMS_OUTPUT.PUT_LINE('Maximum Retail Price: ' || TO_CHAR(v_max_price, 'FM9999999.99'));
 
 END;
@@ -1296,7 +1296,7 @@ DECLARE
     v_security_alert VARCHAR2(100);
     v_amount NUMBER := 0;
     v_user_option NUMBER := 0;
-    continue_loop BOOLEAN := TRUE;  -- ✅ Added Boolean to control the loop
+    continue_loop BOOLEAN := TRUE;  -- 
 BEGIN
     WHILE continue_loop LOOP
         -- Display ATM Menu
@@ -1315,8 +1315,8 @@ BEGIN
             DBMS_OUTPUT.PUT_LINE('Enter deposit amount:');
             v_amount := &deposite_amount;
             v_initial_bankbalance := v_initial_bankbalance + v_amount;
-            DBMS_OUTPUT.PUT_LINE('✅ Deposit successful! New balance: ' || v_initial_bankbalance);
-            continue_loop := FALSE;  -- ✅ Stop the loop after execution
+            DBMS_OUTPUT.PUT_LINE(' Deposit successful! New balance: ' || v_initial_bankbalance);
+            continue_loop := FALSE;  
 
         ELSIF v_user_option = 2 THEN
             DBMS_OUTPUT.PUT_LINE('Enter withdrawal amount:');
@@ -1325,36 +1325,36 @@ BEGIN
             IF v_amount > v_initial_bankbalance THEN
                 DBMS_OUTPUT.PUT_LINE('❌ Insufficient funds! Try an amount within your available balance.');
             ELSIF v_amount > 1200 THEN
-                v_security_alert := '⚠️ Warning: You are withdrawing a large sum of money. Be careful!';
+                v_security_alert := 'Warning: You are withdrawing a large sum of money. Be careful!';
                 DBMS_OUTPUT.PUT_LINE(v_security_alert);
                 v_initial_bankbalance := v_initial_bankbalance - v_amount;
-                DBMS_OUTPUT.PUT_LINE('✅ Withdrawal successful! New balance: ' || v_initial_bankbalance);
+                DBMS_OUTPUT.PUT_LINE('Withdrawal successful! New balance: ' || v_initial_bankbalance);
             ELSE
                 v_initial_bankbalance := v_initial_bankbalance - v_amount;
-                DBMS_OUTPUT.PUT_LINE('✅ Withdrawal successful! New balance: ' || v_initial_bankbalance);
+                DBMS_OUTPUT.PUT_LINE('Withdrawal successful! New balance: ' || v_initial_bankbalance);
             END IF;
 
-            continue_loop := FALSE;  -- ✅ Stop the loop after execution
+            continue_loop := FALSE;  
 
         ELSIF v_user_option = 3 THEN
-            DBMS_OUTPUT.PUT_LINE('🔎 Checking Balance...');
-            DBMS_OUTPUT.PUT_LINE('💰 Available balance: ' || v_initial_bankbalance);
-            continue_loop := FALSE;  -- ✅ Stop the loop after execution
+            DBMS_OUTPUT.PUT_LINE(' Checking Balance...');
+            DBMS_OUTPUT.PUT_LINE('Available balance: ' || v_initial_bankbalance);
+            continue_loop := FALSE;  
 
         ELSIF v_user_option = 4 THEN
-            DBMS_OUTPUT.PUT_LINE('🚪 Exiting...');
-            DBMS_OUTPUT.PUT_LINE('👋 Thank you for using the ATM. Program will now terminate.');
-            continue_loop := FALSE;  -- ✅ Properly exit the loop
+            DBMS_OUTPUT.PUT_LINE('Exiting...');
+            DBMS_OUTPUT.PUT_LINE('Thank you for using the ATM. Program will now terminate.');
+            continue_loop := FALSE;  
 
         ELSE
-            DBMS_OUTPUT.PUT_LINE('❌ Invalid option! Please select a valid number (1-4).');
-            continue_loop := FALSE;  -- ✅ Prevent infinite looping on invalid input
+            DBMS_OUTPUT.PUT_LINE('Invalid option! Please select a valid number (1-4).');
+            continue_loop := FALSE;  
         END IF;
 	
         DBMS_OUTPUT.PUT_LINE('--------------------------------------------');
     END LOOP;
 
-    DBMS_OUTPUT.PUT_LINE('✅ Successfully logged out of the program!');
+    DBMS_OUTPUT.PUT_LINE('Successfully logged out of the program!');
 END;
 /
 
@@ -1426,7 +1426,7 @@ BEGIN
         ELSIF v_user_option = 4 THEN
             DBMS_OUTPUT.PUT_LINE('Exiting...');
             DBMS_OUTPUT.PUT_LINE('Thank you for using the ATM. Program will now terminate.');
-            EXIT;  -- ✅ Properly exits the loop when option 4 is chosen.
+            EXIT; 
 
         ELSE
             DBMS_OUTPUT.PUT_LINE('Invalid option chosen. Please select a valid option.');
